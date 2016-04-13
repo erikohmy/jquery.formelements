@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Demo Select boxes</title>
+
+<link href="../formelements_base.css" rel="stylesheet" type="text/css" />
+<link href="demo_resources/demo_style.css" rel="stylesheet" type="text/css" />
+<link href="demo_resources/demo_style2.css" rel="stylesheet" type="text/css" />
+<link href="demo_resources/demo_formelements_style_2.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="demo_resources/jquery.min.js"></script>
+<script type="text/javascript" src="demo_resources/jquery.tinyscrollbar.js"></script>
+<script type="text/javascript" src="../jquery.formelements.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        init();
+        $("#checkbox1").on('change', function(){
+            console.log('change');
+        }).on('click', function(){
+           console.log('click');
+        });
+    });
+    function init(){
+        // Basic usage
+        $(".styled").formelements();
+    }
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+    <div class="section first">
+        <input type="checkbox" id="checkbox1" value="test" class="styled" /><label for="checkbox1">Checkbox 1</label>
+        <input type="checkbox" id="checkbox2" value="test" class="styled" /><label for="checkbox2">Checkbox 2</label>
+        <input type="checkbox" id="checkbox3" value="test" class="styled" /><label for="checkbox3">Checkbox 3</label>
+        <input type="checkbox" id="checkbox4" value="test" class="styled" /><label for="checkbox4">Checkbox 4</label>
+    </div>
+
+</div>
+
+</body>
+</html>

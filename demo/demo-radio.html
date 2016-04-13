@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Demo Select boxes</title>
+
+<link href="../formelements_base.css" rel="stylesheet" type="text/css" />
+<link href="demo_resources/demo_style.css" rel="stylesheet" type="text/css" />
+<link href="demo_resources/demo_style2.css" rel="stylesheet" type="text/css" />
+<link href="demo_resources/demo_formelements_style_2.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="demo_resources/jquery.min.js"></script>
+<script type="text/javascript" src="demo_resources/jquery.tinyscrollbar.js"></script>
+<script type="text/javascript" src="../jquery.formelements.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        init();
+        $("#checkbox1").on('change', function(){
+            console.log('change');
+        }).on('click', function(){
+           console.log('click');
+        });
+    });
+    function init(){
+        // Basic usage
+        $(".styled").formelements();
+    }
+</script>
+
+<style>
+    .radio-wrap {
+        position: relative;
+        overflow: hidden;
+        margin: 4px 0;
+        line-height: 20px;
+    }
+    label {
+        margin-left: 5px;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <div class="section first">
+        <div class="radio-wrap"><input type="radio" id="radio1" name="radiotest" value="test1" class="styled" /><label for="radio1">Radio 1</label></div>
+        <div class="radio-wrap"><input type="radio" id="radio2" name="radiotest" value="test2" class="styled" /><label for="radio2">Radio 2</label></div>
+        <div class="radio-wrap"><input type="radio" id="radio3" name="radiotest" value="test3" class="styled" /><label for="radio3">Radio 3</label></div>
+        <div class="radio-wrap"><input type="radio" id="radio4" name="radiotest" value="test4" class="styled" /><label for="radio4">Radio 4</label></div>
+    </div>
+</div>
+
+</body>
+</html>

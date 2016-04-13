@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Demo Select boxes</title>
+
+<link href="../formelements_base.css" rel="stylesheet" type="text/css" />
+<link href="demo_resources/demo_style.css" rel="stylesheet" type="text/css" />
+<link href="demo_resources/demo_formelements_style_2.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="demo_resources/jquery.min.js"></script>
+<script type="text/javascript" src="demo_resources/jquery.tinyscrollbar.js"></script>
+<script type="text/javascript" src="../jquery.formelements.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        $("#disable").click(function(){
+            $("select").formelements("disable");
+        });
+
+        $("#enable").click(function(){
+            $("select").formelements("enable");
+        });
+
+        $("#create").click(function(){
+            init();
+        });
+
+        $("#destroy").click(function(){
+            $("select").formelements("destroy");
+        });
+
+        $("#refresh").click(function(){
+            $("select").formelements("refresh");
+        });
+
+        init();
+    });
+    function init(){
+
+        // Basic usage
+        $(".styled").formelements();
+
+        // With search functionality
+        $(".styled-search").formelements({
+            'sel_searchbar': true
+        });
+
+        // With search functionality
+        $(".styled-delegate").formelements({
+            'sel_delegate_click': true
+        });
+
+        //With tiny scrollbar
+        $(".styled-tiny").formelements({
+            'sel_tinyscroll': true
+        });
+
+        $(".styled-tiny-search").formelements({
+            'sel_tinyscroll': true,
+            'sel_searchbar': true
+        });
+
+        // Custom open
+        $(".styled-open-1").formelements({
+            'sel_tinyscroll': true,
+            'sel_open': function( e, dd ) {
+                var _this = this;
+                dd.optwrap.not( ".open" ).slideDown( 200, function() {
+                    if( dd.settings.sel_searchbar_focus ) {
+                        $( this ).find( 'input' ).focus();
+                    }
+                    $(_this).formelements('updateScroll');
+                });
+                dd.optwrap.addClass( "open" );
+                dd.wrap.addClass( "open" );
+            },
+            'sel_close': function( e, dd ) {
+                dd.optwrap.slideUp( 100, function() {
+                    dd.optwrap.removeClass( "open" );
+                    dd.wrap.removeClass( "open" );
+                });
+            }
+        });
+
+        $(".styled-open-2").formelements({
+            'sel_tinyscroll': true,
+            'sel_open': function( e, dd ) {
+                dd.optwrap.not( ".open" ).show( 0, function() {
+                    if( dd.settings.sel_searchbar_focus ) {
+                        $( this ).find( 'input' ).focus();
+                    }
+                });
+                dd.optwrap.addClass( "open" );
+                dd.wrap.addClass( "open" );
+            },
+            'sel_close': function( e, dd ) {
+                dd.optwrap.slideUp( 0, function() {
+                    dd.optwrap.removeClass( "open" );
+                    dd.wrap.removeClass( "open" );
+                });
+            }
+        });
+
+        $(".styled-open-3").formelements({
+            'sel_tinyscroll': true,
+            'sel_open': function( e, dd ) {
+                var _this = this;
+                var $list = dd.optwrap.not( ".open" );
+                $list.css({
+                    'display': 'block',
+                    'left': '100%',
+                    'right': '0%'
+                }).animate({
+                    'left': '0%'
+                }, 200, function(){
+                    dd.optwrap.addClass( "open" );
+                    dd.wrap.addClass( "open" );
+                    $(_this).formelements('updateScroll');
+                });
+            },
+            'sel_close': function( e, dd ) {
+                var $list = dd.optwrap.filter( ".open" );
+                $list.css({
+                    'left': '0%',
+                    'right': '0%'
+                }).animate({
+                    'left': '100%'
+                }, 200,function(){
+                    $(this).hide();
+                    dd.optwrap.removeClass( "open" );
+                    dd.wrap.removeClass( "open" );
+                });
+            }
+        });
+
+        $(".styled-open-4").formelements({
+            'sel_tinyscroll': true,
+            'sel_open': function( e, dd ) {
+                var _this = this;
+                dd.optwrap.not( ".open" ).show( 200, function() {
+                    if( dd.settings.sel_searchbar_focus ) {
+                        $( this ).find( 'input' ).focus();
+                    }
+                    $(_this).formelements('updateScroll');
+                });
+                dd.optwrap.addClass( "open" );
+                dd.wrap.addClass( "open" );
+            },
+            'sel_close': function( e, dd ) {
+                dd.optwrap.hide( 100, function() {
+                    dd.optwrap.removeClass( "open" );
+                    dd.wrap.removeClass( "open" );
+                });
+            }
+        });
+
+        // Multiselect
+        $(".styled-multiselect").formelements({
+            'sel_tinyscroll': true
+        });
+
+        $('#testselect').change(function(){
+            var val = $(this).val();
+            $('.js-output').html(val);
+        });
+    }
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+    <div class="section first">
+        <h2>Methods</h2>
+        <button id="enable">Enable</button>
+        <button id="disable">Disable</button>
+
+        <button id="create">Create</button>
+        <button id="destroy">Destroy</button>
+        <button id="refresh">Refresh</button>
+    </div>
+
+    <div class="section">
+
+        <h2>Basic usage</h2>
+
+    	<select class='styled' id="testselect">
+        	<option class='placeholder'>Choose</option>
+            <option value='1'>Test 1</option>
+            <option value='2'>Test 2</option>
+            <option value='3' selected>Test 3</option>
+            <option value='4'>Test 4</option>
+            <option value='5'>Test 5</option>
+            <option value='6'>Test 6</option>
+            <option value='7'>Test 7</option>
+            <option value='8'>Test 8</option>
+            <option value='9'>Test 9</option>
+            <option value='10'>Test 10</option>
+        </select>
+        <div class="js-output"></div>
+    </div>
+
+    <div class="section">
+
+        <h2>Search functionality</h2>
+
+        <select class='styled-search'>
+            <option class='placeholder'>Choose</option>
+            <option value='1'>Test 1</option>
+            <option value='2'>Test 2</option>
+            <option value='3'>Test 3</option>
+            <option value='4'>Test 4</option>
+            <option value='5'>Test 5</option>
+            <option value='6'>Test 6</option>
+            <option value='7'>Test 7</option>
+            <option value='8'>Test 8</option>
+            <option value='9'>Test 9</option>
+            <option value='10'>Test 10</option>
+        </select>
+    </div>
+
+    <div class="section">
+
+        <h2>Tiny scrollbar</h2>
+
+        <select class='styled-tiny'>
+            <option class='placeholder'>Choose</option>
+            <option value='1'>Test 1</option>
+            <option value='2'>Test 2</option>
+            <option value='3'>Test 3</option>
+            <option value='4'>Test 4</option>
+            <option value='5'>Test 5</option>
+            <option value='6'>Test 6</option>
+            <option value='7'>Test 7</option>
+            <option value='8'>Test 8</option>
+            <option value='9'>Test 9</option>
+            <option value='10'>Test 10</option>
+        </select>
+
+        <select class='styled-tiny-search'>
+            <option class='placeholder'>Choose</option>
+            <option value='1'>Test 1</option>
+            <option value='2'>Test 2</option>
+            <option value='3'>Test 3</option>
+            <option value='4'>Test 4</option>
+            <option value='5'>Test 5</option>
+            <option value='6'>Test 6</option>
+            <option value='7'>Test 7</option>
+            <option value='8'>Test 8</option>
+            <option value='9'>Test 9</option>
+            <option value='10'>Test 10</option>
+        </select>
+    </div>
+
+    <div class="section">
+
+        <h2>Custom open/close</h2>
+
+        <select class='styled-open-1'>
+            <option class='placeholder'>Choose</option>
+            <option value='1'>Test 1</option>
+            <option value='2'>Test 2</option>
+            <option value='3'>Test 3</option>
+            <option value='4'>Test 4</option>
+            <option value='5'>Test 5</option>
+            <option value='6'>Test 6</option>
+            <option value='7'>Test 7</option>
+            <option value='8'>Test 8</option>
+            <option value='9'>Test 9</option>
+            <option value='10'>Test 10</option>
+        </select>
+
+        <select class='styled-open-2'>
+            <option class='placeholder'>Choose</option>
+            <option value='1'>Test 1</option>
+            <option value='2'>Test 2</option>
+            <option value='3'>Test 3</option>
+            <option value='4'>Test 4</option>
+            <option value='5'>Test 5</option>
+            <option value='6'>Test 6</option>
+            <option value='7'>Test 7</option>
+            <option value='8'>Test 8</option>
+            <option value='9'>Test 9</option>
+            <option value='10'>Test 10</option>
+        </select>
+
+        <select class='styled-open-3'>
+            <option class='placeholder'>Choose</option>
+            <option value='1'>Test 1</option>
+            <option value='2'>Test 2</option>
+            <option value='3'>Test 3</option>
+            <option value='4'>Test 4</option>
+            <option value='5'>Test 5</option>
+            <option value='6'>Test 6</option>
+            <option value='7'>Test 7</option>
+            <option value='8'>Test 8</option>
+            <option value='9'>Test 9</option>
+            <option value='10'>Test 10</option>
+        </select>
+
+        <select class='styled-open-4'>
+            <option class='placeholder'>Choose</option>
+            <option value='1'>Test 1</option>
+            <option value='2'>Test 2</option>
+            <option value='3'>Test 3</option>
+            <option value='4'>Test 4</option>
+            <option value='5'>Test 5</option>
+            <option value='6'>Test 6</option>
+            <option value='7'>Test 7</option>
+            <option value='8'>Test 8</option>
+            <option value='9'>Test 9</option>
+            <option value='10'>Test 10</option>
+        </select>
+    </div>
+
+    <div class="section">
+
+        <h2>Multiselect</h2>
+
+        <select class='styled-multiselect' multiple>
+            <option class='placeholder'>Choose</option>
+            <option value='1'>Test 1</option>
+            <option value='2' selected>Test 2</option>
+            <option value='3'>Test 3</option>
+            <option value='4' selected>Test 4</option>
+            <option value='5'>Test 5</option>
+            <option value='6'>Test 6</option>
+            <option value='7'>Test 7</option>
+            <option value='8'>Test 8</option>
+            <option value='9'>Test 9</option>
+            <option value='10'>Test 10</option>
+        </select>
+
+    </div>
+
+    <div class="section">
+
+        <h2>Option groups</h2>
+
+        <select class='styled'>
+            <option class='placeholder'>Choose</option>
+
+            <optgroup label="1-4">
+                <option value='1'>Test 1</option>
+                <option value='2'>Test 2</option>
+                <option value='3'>Test 3</option>
+                <option value='4'>Test 4</option>
+            </optgroup>
+
+            <optgroup label="5-8">
+                <option value='5'>Test 5</option>
+                <option value='6'>Test 6</option>
+                <option value='7'>Test 7</option>
+                <option value='8'>Test 8</option>
+            </optgroup>
+
+            <optgroup label="9-12">
+                <option value='9'>Test 9</option>
+                <option value='10'>Test 10</option>
+                <option value='11'>Test 11</option>
+                <option value='12'>Test 12</option>
+            </optgroup>
+        </select>
+
+    </div>
+
+    <div class="section">
+
+        <h2>Delegate click</h2>
+
+        <select class='styled-delegate'>
+            <option class='placeholder'>Choose</option>
+            <option value='1'>Test 1</option>
+            <option value='2'>Test 2</option>
+            <option value='3'>Test 3</option>
+            <option value='4'>Test 4</option>
+            <option value='5'>Test 5</option>
+            <option value='6'>Test 6</option>
+            <option value='7'>Test 7</option>
+            <option value='8'>Test 8</option>
+            <option value='9'>Test 9</option>
+            <option value='10'>Test 10</option>
+            <option value='11'>Test 11</option>
+            <option value='12'>Test 12</option>
+        </select>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Demo Select boxes</title>
+
+<link href="../formelements_base.css" rel="stylesheet" type="text/css" />
+<link href="demo_resources/demo_style.css" rel="stylesheet" type="text/css" />
+<link href="demo_resources/demo_formelements_style_2.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="demo_resources/jquery.min.js"></script>
+<script type="text/javascript" src="demo_resources/jquery.tinyscrollbar.js"></script>
+<script type="text/javascript" src="../jquery.formelements.js"></script>
+
+<script type="text/javascript">
+    $(init);
+    function init(){
+        $(".styled").formelements();
+        $(".styled2").formelements({
+            'sel_tinyscroll' : true
+        }).on('change',function(){
+            console.log('change');
+        });
+
+        $(".refresh1").click(function(){
+            $(".styled").formelements('refresh');
+        });
+
+        $(".refresh2").click(function(){
+            $(".styled2").formelements('refresh');
+        });
+    }
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="section first">
+
+        <h2>Option groups</h2>
+
+        <select class='styled'>
+            <option class='placeholder'>Choose</option>
+
+            <optgroup label="Lorem ipsum">
+                <option value='1'>Test 1</option>
+                <option value='2'>Test 2</option>
+                <option value='3'>Test 3</option>
+                <option value='4'>Test 4</option>
+            </optgroup>
+
+            <optgroup label="Other options">
+                <option value='5'>Test 5</option>
+                <option value='6'>Test 6</option>
+                <option value='7'>Test 7</option>
+                <option value='8'>Test 8</option>
+            </optgroup>
+
+            <optgroup label="Testing again">
+                <option value='9'>Test 9</option>
+                <option value='10'>Test 10</option>
+                <option value='11'>Test 11</option>
+                <option value='12'>Test 12</option>
+            </optgroup>
+        </select>
+
+        <button class="refresh1">Refresh</button>
+
+    </div>
+
+    <div class="section">
+        <h2>Option groups with tiny scrollbar</h2>
+
+        <select class='styled2'>
+            <option class='placeholder'>Choose</option>
+
+            <optgroup label="Lorem ipsum">
+                <option value='1'>Test 1</option>
+                <option value='2'>Test 2</option>
+                <option value='3'>Test 3</option>
+                <option value='4'>Test 4</option>
+            </optgroup>
+
+            <optgroup label="Other options">
+                <option value='5'>Test 5</option>
+                <option value='6'>Test 6</option>
+                <option value='7'>Test 7</option>
+                <option value='8'>Test 8</option>
+            </optgroup>
+
+            <optgroup label="Testing again">
+                <option value='9'>Test 9</option>
+                <option value='10'>Test 10</option>
+                <option value='11'>Test 11</option>
+                <option value='12'>Test 12</option>
+            </optgroup>
+        </select>
+
+        <button class="refresh2">Refresh</button>
+    </div>
+
+</div>
+
+</body>
+</html>

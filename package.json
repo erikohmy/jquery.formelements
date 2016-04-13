@@ -1,0 +1,31 @@
+{
+  "name": "jquery.formelements",
+  "version": "0.0.4",
+  "description": "WIP ( Work In Progress ) - jQuery plugin to easily customize radio buttons, checkboxes and select elements",
+  "main": "jquery.formelements.js",
+  "directories": {
+    "demo": "demo"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erikohmy/jquery.formelements.git"
+  },
+  "keywords": [
+    "js",
+    "form",
+    "element",
+    "jquery"
+  ],
+  "author": "Erik Lindgren",
+  "license": "ISC",
+  "peerDependencies": {
+    "jquery": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/erikohmy/jquery.formelements/issues"
+  },
+  "homepage": "https://github.com/erikohmy/jquery.formelements#readme"
+}
