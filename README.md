@@ -1,4 +1,4 @@
-# [jQuery Formelements]
+#jQuery Formelements
 #### jQuery plugin to easily customize radio buttons, checkboxes and select elements
 
 Formelements makes it easier gives a reliable way to customize the appearence and functionality of radio buttons, checkboxes and select elements.
