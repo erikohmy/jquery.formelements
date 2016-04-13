@@ -1,0 +1,100 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'publish' ]
+2 info using npm@3.7.3
+3 info using node@v5.9.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/home/erik/projects/testserver/egna/npm/jquery.formelements',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /home/erik/.npm/jquery.formelements/0.0.6/package.tgz not in flight; packing
+9 verbose correctMkdir /home/erik/.npm correctMkdir not in flight; initializing
+10 info lifecycle jquery.formelements@0.0.6~prepublish: jquery.formelements@0.0.6
+11 silly lifecycle jquery.formelements@0.0.6~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/home/erik/.npm/jquery.formelements/0.0.6/package.tgz',
+12 verbose tar pack   '/home/erik/projects/testserver/egna/npm/jquery.formelements' ]
+13 verbose tarball /home/erik/.npm/jquery.formelements/0.0.6/package.tgz
+14 verbose folder /home/erik/projects/testserver/egna/npm/jquery.formelements
+15 verbose addLocalTarball adding from inside cache /home/erik/.npm/jquery.formelements/0.0.6/package.tgz
+16 verbose correctMkdir /home/erik/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd jquery.formelements@0.0.6
+18 verbose afterAdd /home/erik/.npm/jquery.formelements/0.0.6/package/package.json not in flight; writing
+19 verbose correctMkdir /home/erik/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /home/erik/.npm/jquery.formelements/0.0.6/package/package.json written
+21 silly publish { name: 'jquery.formelements',
+21 silly publish   version: '0.0.6',
+21 silly publish   description: 'jQuery plugin to easily customize radio buttons, checkboxes and select elements',
+21 silly publish   main: 'jquery.formelements.js',
+21 silly publish   directories: { demo: 'demo' },
+21 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/erikohmy/jquery.formelements.git' },
+21 silly publish   keywords: [ 'js', 'form', 'element', 'jquery' ],
+21 silly publish   author: { name: 'Erik Lindgren' },
+21 silly publish   license: 'ISC',
+21 silly publish   peerDependencies: { jquery: '*' },
+21 silly publish   bugs: { url: 'https://github.com/erikohmy/jquery.formelements/issues' },
+21 silly publish   homepage: 'https://github.com/erikohmy/jquery.formelements#readme',
+21 silly publish   readme: '#jQuery Formelements\n#### jQuery plugin to easily customize radio buttons, checkboxes and select elements\n\nFormelements gives a reliable way to customize the appearence and functionality of radio buttons, checkboxes and select elements.\n\nRefer to the demo folder for examples.\n\n###Note\n-----\nThis used to be a privately used project but has by request been shared publicly, which means that a major cleanup will be needed, especially in the documentation and demo section.\n\n###Setup\n-----\n\nJust include [jquery.formelements.js] after jQuery and add the formelements_base.css\n\n####Standard\n``` html\n<script src=\'jquery.js\'></script>\n<script src=\'jquery.formelements.js\'></script>\n<link href="formelements_base.css" rel="stylesheet" type="text/css" />\n```\n\n``` js\n<script src=\'jquery.js\'></script>\n<script src=\'jquery.formelements.js\'></script>\n<link href="formelements_base.css" rel="stylesheet" type="text/css" />\n```\n####NPM\n$ npm install --save jquery.formelements\n\n[npm]: http://npmjs.org/package/jquery.formelements\n[jquery.formelements.js]: https://github.com/erikohmy/jquery.formelements/tree/master\n\n``` js\nvar $ = jQuery = require(\'jquery\');\nrequire(\'jquery.formelements\');\n```\n\n###Usage\n-----\n\nCode needs to be run after the elements are created ( and updated if changed )\n\n``` js\n$(function(){\n\t$(\'input[type="checkbox"], input[type="radio"], select\').formelements();\n});\n```\n\n###Available Options\n-----\n\n``` js\n$(\'element\').formelements({\n\t\'classlist\': "formelements_item my_custom_class"\n});\n```\n\n``` js\n{\n\t// For all elements\n\t\'classlist\': "formelements_item",\n\t\n\t// For select only\n\t\'sel_multiselect_control\': false,\n\t\'sel_tinyscroll\': false,\n\t\'sel_searchbar\': false,\n\t\'sel_searchbar_focus\': true,\n\t\'text_search_placeholder\': "Search...",\n\t\'sel_delegate_click\': false,\n\t\'sel_label\': function( $li, $input, index ) {},\n\t\'sel_open\': function( e, dd ) {\n\t\tdd.optwrap.not( ".open" ).fadeIn( 200, function() {\n\t\t\tif( dd.settings.sel_searchbar_focus ) {\n\t\t\t\t$( this ).find( \'input\' ).focus();\n\t\t\t}\n\t\t});\n\t\tdd.optwrap.addClass( "open" );\n\t\tdd.wrap.addClass( "open" );\n\t},\n\t\'sel_close\': function( e, dd ) {\n\t\tdd.optwrap.fadeOut( 200, function() {\n\t\t\tdd.optwrap.removeClass( "open" );\n\t\t\tdd.wrap.removeClass( "open" );\n\t\t});\n\t},\n\t\'search_function\': function( search, $el ) {\n\t\tvar text = $el.text();\n\t\n\t\t// hide the item if it is a placeholder, or if the searchvalue is not in its text\n\t\tif( $el.hasClass( \'placeholder\' ) || text.toLowerCase().indexOf( search.toLowerCase() ) === -1 ) {\n\t\t\treturn 0;\n\t\t}\n\t\treturn 1;\n\t},\n\t\'render_display\': function() {\n\t\tvar $select = $(this);\n\t\tvar $display = $select.closest(\'.formelements_select\').find(\'.formelements_select_display\');\n\t\tvar $opts = $select.formelements(\'selected\');\n\t\n\t\tvar labels = [];\n\t\t$opts.each(function(){\n\t\t\tlabels.push( $(this).text() );\n\t\t});\n\t\n\t\t$display.html(labels.join(\', \'));\n\t}\n}\n```',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '224151bf7af14d670c748391dd57328684db9022',
+21 silly publish   _id: 'jquery.formelements@0.0.6',
+21 silly publish   _shasum: '607d7599d41c88f86dc4a27b3b9c558be977d127',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name jquery.formelements
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry uri https://registry.npmjs.org/jquery.formelements
+27 verbose publish registryBase https://registry.npmjs.org/
+28 silly publish uploading /home/erik/.npm/jquery.formelements/0.0.6/package.tgz
+29 verbose request uri https://registry.npmjs.org/jquery.formelements
+30 verbose request sending authorization for write operation
+31 info attempt registry request try #1 at 11:11:37 AM
+32 verbose request using bearer token for auth
+33 verbose request id ef76ffefe1ef18f0
+34 http request PUT https://registry.npmjs.org/jquery.formelements
+35 http 403 https://registry.npmjs.org/jquery.formelements
+36 verbose headers { 'content-type': 'application/json',
+36 verbose headers   'cache-control': 'max-age=300',
+36 verbose headers   'content-length': '95',
+36 verbose headers   'accept-ranges': 'bytes',
+36 verbose headers   date: 'Wed, 13 Apr 2016 09:11:39 GMT',
+36 verbose headers   via: '1.1 varnish',
+36 verbose headers   connection: 'keep-alive',
+36 verbose headers   'x-served-by': 'cache-ams4122-AMS',
+36 verbose headers   'x-cache': 'MISS',
+36 verbose headers   'x-cache-hits': '0',
+36 verbose headers   'x-timer': 'S1460538697.771345,VS0,VE1395',
+36 verbose headers   vary: 'Accept-Encoding' }
+37 verbose request invalidating /home/erik/.npm/registry.npmjs.org/jquery.formelements on PUT
+38 error publish Failed PUT 403
+39 verbose stack Error: "You cannot publish over the previously published version 0.0.6." : jquery.formelements
+39 verbose stack     at makeError (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+39 verbose stack     at CachingRegistryClient.<anonymous> (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+39 verbose stack     at Request._callback (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+39 verbose stack     at Request.self.callback (/usr/lib/node_modules/npm/node_modules/request/request.js:199:22)
+39 verbose stack     at emitTwo (events.js:100:13)
+39 verbose stack     at Request.emit (events.js:185:7)
+39 verbose stack     at Request.<anonymous> (/usr/lib/node_modules/npm/node_modules/request/request.js:1036:10)
+39 verbose stack     at emitOne (events.js:95:20)
+39 verbose stack     at Request.emit (events.js:182:7)
+39 verbose stack     at IncomingMessage.<anonymous> (/usr/lib/node_modules/npm/node_modules/request/request.js:963:12)
+40 verbose statusCode 403
+41 verbose pkgid jquery.formelements
+42 verbose cwd /home/erik/projects/testserver/egna/npm/jquery.formelements
+43 error Linux 4.2.0-34-generic
+44 error argv "/usr/bin/nodejs" "/usr/bin/npm" "publish"
+45 error node v5.9.1
+46 error npm  v3.7.3
+47 error code E403
+48 error "You cannot publish over the previously published version 0.0.6." : jquery.formelements
+49 error If you need help, you may report this error at:
+49 error     <https://github.com/npm/npm/issues>
+50 verbose exit [ 1, true ]
