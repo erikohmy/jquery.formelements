@@ -108,3 +108,18 @@ $('element').formelements({
 	}
 }
 ```
+
+Option                  |
+----------------------- | -----------------------
+classlist               |
+sel_multiselect_control |
+sel_tinyscroll          |
+sel_searchbar           |
+sel_searchbar_focus     |
+text_search_placeholder |
+sel_delegate_click      |
+sel_label               |
+sel_open                | 
+sel_close               |  
+search_function         |       
+render_display          |          
