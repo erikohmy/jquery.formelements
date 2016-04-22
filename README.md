@@ -123,3 +123,16 @@ sel_open                |
 sel_close               |  
 search_function         |       
 render_display          |          
+
+###Available Methods
+-----
+Method                  |
+----------------------- | -----------------------
+destroy                 |
+disable                 |
+enable                  |
+updateScroll            |
+refresh                 |
+selected                |
+settings                |
+addOption               |
