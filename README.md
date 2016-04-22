@@ -126,7 +126,7 @@ render_display          |
 
 ###Available Methods
 -----
-Method                  |
+Method                  | Explanation
 ----------------------- | -----------------------
 destroy                 | Destroys the formelement object, reverting the element to the native form
 disable                 | Disables the dropdown, disallowing clicks and changes and applies the class .formelements_disabled to the wrapper
