@@ -128,11 +128,10 @@ render_display          |
 -----
 Method                  |
 ----------------------- | -----------------------
-destroy                 |
-disable                 |
-enable                  |
-updateScroll            |
-refresh                 |
-selected                |
-settings                |
-addOption               |
+destroy                 | Destroys the formelement object, reverting the element to the native form
+disable                 | Disables the dropdown, disallowing clicks and changes and applies the class .formelements_disabled to the wrapper
+enable                  | Enables the dropdown after disabling it
+updateScroll            | Update the tinyscrollbar height if used
+refresh                 | Recreates the dropdown, usefull if the options are re-populated
+selected                | Returns the selected option elements
+settings                | Returns an object containing the current options
