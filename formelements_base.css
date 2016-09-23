@@ -14,7 +14,7 @@
 select.formelements_hide {
   position: absolute; }
 
-.formelements_disabled {
+.formelements_disabled, .formelelemts_item_disabled {
   opacity: 0.4;
   filter: alpha(opacity=50); }
 
