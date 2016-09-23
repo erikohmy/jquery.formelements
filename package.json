@@ -1,6 +1,6 @@
 {
   "name": "jquery.formelements",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "jQuery plugin to easily customize radio buttons, checkboxes and select elements",
   "main": "jquery.formelements.js",
   "directories": {

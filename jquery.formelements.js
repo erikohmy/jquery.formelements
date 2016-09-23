@@ -14,7 +14,7 @@
 }(this, function( $ ) {
 
     $.formelements = {
-        version: "0.0.7"
+        version: "0.0.8"
     };
 
     var methods = {
@@ -40,10 +40,12 @@
             this.attr( "disabled", false ).parent().removeClass( "formelements_disabled" );
             return this;
         },
+        // Update the tinyscrollbar
         updateScroll: function(){
             var optwrap = this.closest('.formelements_item').find('.formelements_listwrap' );
             optwrap.data('tsb').update();
         },
+        // Destroy and recreate the dropdown with the same options
         refresh: function(){
             var settings = this.formelements('settings');
             this.formelements('destroy').formelements(settings);
@@ -61,13 +63,6 @@
                 return settings;
             }
             return undefined;
-        },
-        addOption: function(option) {
-            var $opt = $("<option></option>");
-            $opt.attr('value', option.value);
-            $opt.text(option.label);
-            this.append($opt);
-            this.formelements('refresh');
         }
     };
 
@@ -246,8 +241,14 @@
                         $opt.add( $el ).attr( 'rel', 'sel_' + index );
                         $el.html( label );
 
+                        // Copy classlist from option to the li
                         var opt_class = $opt.attr( "class" );
                         $el.attr( "class", opt_class );
+
+						if ( $opt.prop('disabled') )
+						{
+							$el.addClass('formelelemts_item_disabled');
+						}
 
                         settings.sel_label( $el, $opt, index );
 
@@ -411,6 +412,11 @@
              */
             opts.find( "li").not('.formelements_optgroup').click(function(e) {
                 var $li = $( this );
+
+				if ( $li.hasClass('formelelemts_item_disabled') )
+				{
+					return false;
+				}
 
                 if( ! multi ) {
                     element.trigger("sel_close", {wrap: wrap, optwrap: optwrap, settings: settings});
