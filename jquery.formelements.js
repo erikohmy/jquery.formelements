@@ -14,7 +14,7 @@
 }(this, function( $ ) {
 
     $.formelements = {
-        version: "0.0.8"
+        version: "0.0.9"
     };
 
     var methods = {
@@ -307,7 +307,7 @@
                 Option group code
             */
             var $groups = element.find('optgroup');
-            if( $groups.size() ) {
+            if( $groups.length ) {
                 $groups.each(function(){
                     var $el = $(this);
                     var label = $el.attr('label');
@@ -454,7 +454,7 @@
             $wrap.find('li.active').removeClass('active');
             $display.removeClass('placeholder');
 
-            if( $opt.size() === 0 ) {
+            if( $opt.length === 0 ) {
             	$opt = $input.find('option').first();
                 if( $opt.hasClass('placeholder') ) {
                     $wrap.find( '.formelements_select_display' ).addClass('placeholder');
@@ -504,21 +504,21 @@
                 }
 
                 // Noting is selected, re-render, setting the first option!
-                if($opts.filter('.active').size() == 0) {
+                if($opts.filter('.active').length == 0) {
                     form_select_render($input);
                 }
 
                 // If placeholder is selected, as well as an option, de-select the placeholder
-                if( $opts.filter('.active').size() > 1 ) {
+                if( $opts.filter('.active').length > 1 ) {
                     var $ph = $input.find('.placeholder:selected');
-                    if( $ph.size() > 0 ) {
+                    if( $ph.length > 0 ) {
                     	$ph.prop('selected', false);
                     	$opts.filter('[rel="' + $ph.attr('rel') + '"]').removeClass('active');
                     }
                 }
             }
 
-            jQuery.proxy(settings.render_display, $input)();
+            $.proxy(settings.render_display, $input)();
 
             if ( change != false ) {
                 $input.change();
