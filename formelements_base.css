@@ -2,28 +2,32 @@
 	shared
 */
 .formelements_hide {
-  position: relative;
-  visibility: hidden;
-  height: 0;
-  width: 0;
-  margin: 0;
-  padding: 0;
-  outline: none;
-  border: none; }
+	position: relative;
+	visibility: hidden;
+	height: 0;
+	width: 0;
+	margin: 0;
+	padding: 0;
+	outline: none;
+	border: none;
+}
 
 select.formelements_hide {
-  position: absolute; }
+	position: absolute;
+}
 
 .formelements_disabled, .formelelemts_item_disabled {
-  opacity: 0.4;
-  filter: alpha(opacity=50); }
+	opacity: 0.4;
+	filter: alpha(opacity=50);
+}
 
 .formelements_radio, .formelements_check, .formelements_select {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  -ms-user-select: none;
-      user-select: none; }
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
 
 /*
 	checkbox and radiobutton
@@ -32,57 +36,83 @@ select.formelements_hide {
 	select box
 */
 .formelements_select .formelements_select_display {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap; }
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
 
 /* tinyscrollbar css */
 .formelements_listwrap .viewport {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative; }
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
 
 .formelements_listwrap .overview {
-  list-style: none;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0; }
+	list-style: none;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
 
 .formelements_listwrap .scrollbar .thumb, .formelements_listwrap .scrollbar .thumb .end {
-  background-color: #ddd;
-  border-radius: 2px; }
+	background-color: #ddd;
+	border-radius: 2px;
+}
 
 .formelements_listwrap .scrollbar, .formelements_listwrap .track, .formelements_listwrap .scrollbar .thumb, .formelements_listwrap .scrollbar .thumb .end {
-  width: 4px;
-  box-sizing: content-box; }
+	width: 4px;
+	box-sizing: content-box;
+}
 
 .formelements_listwrap .scrollbar {
-  position: absolute;
-  height: 100%;
-  right: 0px;
-  outline: 1px solid #eee; }
+	position: absolute;
+	height: 100%;
+	right: 0px;
+	outline: 1px solid #eee;
+}
 
 .formelements_listwrap .scrollbar {
-  background-color: #fff;
-  padding: 0px 2px;
-  z-index: 1000; }
+	background-color: #fff;
+	padding: 0px 2px;
+	z-index: 1000;
+}
 
 .formelements_listwrap .track {
-  height: 100%;
-  padding: 0; }
+	height: 100%;
+	padding: 0;
+}
 
 .formelements_listwrap .scrollbar .thumb {
-  height: 20px;
-  cursor: pointer;
-  overflow: hidden;
-  position: absolute;
-  top: 0; }
+	height: 20px;
+	cursor: pointer;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+}
 
 .formelements_listwrap .scrollbar .thumb .end {
-  overflow: hidden;
-  height: 5px; }
+	overflow: hidden;
+	height: 5px;
+}
+
+.formelements_select .formelements_clear {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	height: 20px;
+	width: 20px;
+	line-height: 20px;
+	text-align: center;
+}
+
+.formelements_select.formelements_empty .formelements_clear {
+	display: none;
+}
 
 .formelements_listwrap .disable {
-  display: none; }
+	display: none;
+}

@@ -56,6 +56,10 @@
             var $opts = $select.find('option');
             return $opts.filter(':selected');
         },
+		isEmpty: function()
+		{
+			return $(this).formelements('selected').not('.placeholder').length === 0;
+		},
         // Returns the settings object
         settings: function() {
             var settings = this.data('formelements-settings');
@@ -81,6 +85,7 @@
             'classlist': "formelements_item",
             'sel_multiselect_control': false,
             'sel_tinyscroll': false,
+			'sel_enable_clear': false,
             'sel_searchbar': false,
             'sel_searchbar_focus': true,
             'text_search_placeholder': "Search...",
@@ -373,6 +378,19 @@
                 });
             }
 
+			/*
+			 Clear code
+			 */
+			if ( settings.sel_enable_clear )
+			{
+				var $clearbtn = $('<a class="formelements_clear" href="javascript:;">&#10005;</a>');
+				wrap.append($clearbtn);
+				$clearbtn.on('click', function()
+				{
+					element.val('').change();
+				});
+			}
+
             if( settings.sel_delegate_click ) {
                 element.css({
                     'position': 'absolute',
@@ -466,6 +484,15 @@
                 var $li = $wrap.find( 'li[rel="' + rel + '"]' );
                 form_select_change( $wrap, $li, false );
             });
+
+			if ( $input.formelements('isEmpty') )
+			{
+				$wrap.addClass('formelements_empty');
+			}
+			else
+			{
+				$wrap.removeClass('formelements_empty');
+			}
         }
 
         function form_select_change( wrap, $opt, change ) {
